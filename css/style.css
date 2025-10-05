@@ -1,0 +1,483 @@
+:root {
+  --neon: #b26bff;
+  --dark-bg: #0a0a0f;
+  --dark-section: #0f0f18;
+  --text-light: #f5f5f5;
+  --text-muted: #aaa;
+  --btn-hover: #d7a8ff;
+}
+
+/* RESET Y BODY */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--text-light);
+  overflow-x: hidden;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: rgba(15, 15, 25, 0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(178, 107, 255, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  color: var(--neon);
+}
+
+.navbar nav a {
+  color: var(--text-light);
+  text-decoration: none;
+  margin: 0 15px;
+  transition: color 0.3s;
+}
+
+.navbar nav a:hover {
+  color: var(--neon);
+}
+
+/* HERO */
+.hero {
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: radial-gradient(circle at center, #1a1a2e, var(--dark-bg));
+}
+
+.hero-content {
+  max-width: 700px;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  color: var(--neon);
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+}
+
+.btn {
+  background: var(--neon);
+  color: #000;
+  padding: 12px 25px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  box-shadow: 0 0 20px var(--neon);
+  transform: scale(1.05);
+}
+
+/* CATALOGO */
+.catalog-preview, .catalog-page {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.catalog-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin: 40px 0;
+}
+
+.game-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(178, 107, 255, 0.3);
+  border-radius: 15px;
+  width: 250px;
+  padding: 15px;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px var(--neon);
+}
+
+.game-card img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.tag {
+  background: var(--neon);
+  color: #000;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+}
+
+.filters {
+  margin-bottom: 25px;
+}
+
+.filter-btn {
+  padding: 8px 15px;
+  margin: 5px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: rgba(178, 107, 255, 0.3);
+  color: var(--text-light);
+  transition: 0.3s;
+}
+
+.filter-btn:hover {
+  background: var(--neon);
+  color: #000;
+}
+
+/* LOGROS / RECOMPENSAS */
+.achievements {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--dark-section);
+}
+
+.achievements-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.achievement-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(178, 107, 255, 0.3);
+  border-radius: 15px;
+  padding: 20px;
+  width: 180px;
+  transition: 0.3s;
+  position: relative;
+}
+
+.achievement-card:hover {
+  box-shadow: 0 0 15px var(--neon);
+}
+
+.progress-container {
+  width: 100%;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  height: 10px;
+  margin-top: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--neon);
+  border-radius: 10px;
+}
+
+/* SOBRE NOSOTROS */
+.about-page {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.team-section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.team-member {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 15px;
+  width: 200px;
+  transition: 0.3s;
+}
+
+.team-member:hover {
+  box-shadow: 0 0 15px var(--neon);
+}
+
+.team-member img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* LOGIN */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 20px;
+}
+
+.login-container {
+  background: var(--dark-section);
+  padding: 30px;
+  border-radius: 15px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(178,107,255,0.5);
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+  color: var(--neon);
+  font-family: 'Orbitron', sans-serif;
+}
+
+.login-container form input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid rgba(178,107,255,0.3);
+  background: #111;
+  color: var(--text-light);
+  outline: none;
+}
+
+.login-container form button {
+  width: 100%;
+  margin-top: 10px;
+  background: var(--neon);
+  color: #000;
+  border: none;
+  padding: 12px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.login-container form button:hover {
+  box-shadow: 0 0 20px var(--neon);
+}
+
+.social-login {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.btn-google {
+  background: #db4437;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-facebook {
+  background: #4267B2;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.social-login button:hover {
+  opacity: 0.9;
+}
+
+/* CHATBOT */
+.chatbot-icon {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  font-size: 2.5rem;
+  background: var(--neon);
+  color: #000;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 15px var(--neon);
+  z-index: 100;
+  transition: transform 0.2s;
+}
+
+.chatbot-icon:hover {
+  transform: scale(1.1);
+}
+
+.chatbot-window {
+  position: fixed;
+  bottom: 90px;
+  right: 25px;
+  width: 320px;
+  background: #111;
+  border: 1px solid var(--neon);
+  border-radius: 15px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 0 25px var(--neon);
+  z-index: 101;
+}
+
+.chat-header {
+  background: var(--neon);
+  color: #000;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-body {
+  padding: 10px;
+  height: 250px;
+  overflow-y: auto;
+  background: #0a0a0f;
+}
+
+.bot-message, .user-message {
+  padding: 8px 12px;
+  margin: 5px 0;
+  border-radius: 10px;
+  max-width: 80%;
+}
+
+.bot-message {
+  background: var(--neon);
+  color: #000;
+  text-align: left;
+}
+
+.user-message {
+  background: #333;
+  color: var(--text-light);
+  text-align: right;
+}
+
+.chat-input {
+  display: flex;
+  border-top: 1px solid var(--neon);
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background: #111;
+  color: var(--text-light);
+}
+
+.chat-input button {
+  background: var(--neon);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  border-top: 1px solid rgba(178, 107, 255, 0.2);
+  background: var(--dark-bg);
+  color: var(--text-muted);
+}
+
+/* IMÁGENES */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+/* SOBRE NOSOTROS - SECCIÓN EQUIPO */
+.about-page {
+  padding: 60px 20px;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-page h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  color: var(--neon);
+  margin-bottom: 20px;
+}
+
+.about-page p {
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  color: #ccc;
+}
+
+.team-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.team-member {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(178, 107, 255, 0.3);
+  border-radius: 15px;
+  width: 220px;
+  padding: 15px;
+  transition: 0.3s;
+}
+
+.team-member:hover {
+  box-shadow: 0 0 20px var(--neon);
+  transform: translateY(-5px);
+}
+
+.team-member img {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+.team-member h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  color: var(--neon);
+  margin-bottom: 5px;
+}
+
+.team-member p {
+  font-size: 0.9rem;
+  color: #aaa;
+}
