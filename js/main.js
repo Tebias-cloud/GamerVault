@@ -1,14 +1,29 @@
 // --- CONFIGURACIÓN DEL CHAT ---
-// (Asegúrate de que estos IDs coincidan con tu HTML)
-const chatInput = document.getElementById('chat-input'); // El <input> donde escribe el usuario
-const sendButton = document.getElementById('send-button'); // El botón de enviar
-const chatWindow = document.getElementById('chat-window'); // El <div> que contiene los mensajes
-
-// Esta es la URL de tu "cerebro".
-// Apunta al servidor que está corriendo en tu terminal.
+// URLs (¡Correcto!)
 const API_URL = 'https://gamevault-backend-hyin.onrender.com/api/chat';
 
-// --- LÓGICA DE EVENTOS ---
+// Selectores para ABRIR y CERRAR el chat
+const chatIcon = document.getElementById('chatbotIcon');
+const chatPopup = document.getElementById('chatbotWindow'); // La ventana emergente
+const closeButton = document.getElementById('closeChat');
+
+// Selectores para ENVIAR mensajes (¡CORREGIDOS!)
+const chatInput = document.getElementById('chatInput'); // Corregido
+const sendButton = document.getElementById('sendBtn');   // Corregido
+const chatWindow = document.getElementById('chatBody'); // Corregido (es 'chatBody')
+
+// --- LÓGICA DE ABRIR Y CERRAR ---
+chatIcon.addEventListener('click', () => {
+  // Asumiendo que tu CSS oculta '.chatbot-window' por defecto
+  // y lo muestra con 'display: flex' o 'display: block'
+  chatPopup.style.display = 'flex'; // O 'block', según tu CSS
+});
+
+closeButton.addEventListener('click', () => {
+  chatPopup.style.display = 'none';
+});
+
+// --- LÓGICA DE EVENTOS (Enviar mensaje) ---
 sendButton.addEventListener('click', enviarMensaje);
 chatInput.addEventListener('keypress', function(e) {
   if (e.key === 'Enter') {
@@ -16,7 +31,7 @@ chatInput.addEventListener('keypress', function(e) {
   }
 });
 
-// --- FUNCIÓN PRINCIPAL ---
+// --- FUNCIÓN PRINCIPAL (Sin cambios, ya estaba bien) ---
 async function enviarMensaje() {
   const mensaje = chatInput.value.trim();
   if (!mensaje) return; // No enviar mensajes vacíos
@@ -38,7 +53,6 @@ async function enviarMensaje() {
       body: JSON.stringify({ mensaje: mensaje }), // Envía el mensaje del usuario
     });
 
-    // 3. Recibe la respuesta del servidor
     const data = await response.json();
     const respuestaIA = data.respuesta;
 
@@ -49,19 +63,27 @@ async function enviarMensaje() {
   } catch (error) {
     console.error('Error:', error);
     // Si falla, quita el "escribiendo..." y muestra un error
-    document.querySelector('.bot-loading').remove();
-    mostrarMensaje('Error de conexión. Asegúrate de que el servidor esté corriendo.', 'bot-error');
+    if (document.querySelector('.bot-loading')) {
+      document.querySelector('.bot-loading').remove();
+    }
+    mostrarMensaje('Error de conexión. El servidor puede estar "despertando". Intenta de nuevo en 30 segundos.', 'bot-error');
   }
 }
 
-// --- FUNCIÓN AUXILIAR ---
-// (Esta es una función de ejemplo, adáptala a tu HTML/CSS)
+// --- FUNCIÓN AUXILIAR (Sin cambios, ya estaba bien) ---
 function mostrarMensaje(mensaje, tipo) {
   // 'tipo' será 'usuario', 'bot', 'bot-loading' o 'bot-error'
   // Puedes usar esto para darle estilos CSS diferentes
 
   const messageElement = document.createElement('div');
-  messageElement.classList.add('chat-message', tipo); // Añade clases para CSS
+  // Ajuste: tu HTML usa 'bot-message' para el primer mensaje, usemos ese estándar
+  if (tipo === 'bot') {
+    messageElement.classList.add('bot-message');
+  } else {
+    // Aquí puedes añadir clases para 'usuario', 'bot-loading', 'bot-error'
+    messageElement.classList.add(tipo + '-message');
+  }
+  
   messageElement.textContent = mensaje;
   
   chatWindow.appendChild(messageElement);
@@ -69,5 +91,3 @@ function mostrarMensaje(mensaje, tipo) {
   // Auto-scroll al final
   chatWindow.scrollTop = chatWindow.scrollHeight;
 }
-
-
