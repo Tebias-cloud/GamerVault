@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GamerVault | Login</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">🎮 GamerVault</div>
+    <nav>
+<nav>
+  <a href="index.html">Inicio</a>
+  <a href="catalogo.html">Catálogo</a>
+  <a href="recompensas.html">Recompensas</a>
+  <a href="sobre.html">Sobre Nosotros</a>
+  <a href="login.html">Login</a>
+</nav>
+
+
+    </nav>
+  </header>
+
+  <section class="login-page">
+    <div class="login-container">
+      <h2>Iniciar Sesión</h2>
+      <form>
+        <input type="email" placeholder="Correo electrónico" required>
+        <input type="password" placeholder="Contraseña" required>
+        <button type="submit" class="btn">Iniciar Sesión</button>
+      </form>
+      <div class="social-login">
+        <button class="btn-google">Continuar con Google</button>
+        <button class="btn-facebook">Continuar con Facebook</button>
+      </div>
+      <p>¿No tienes cuenta? <a href="#">Regístrate</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 GamerVault - IA & Recompensas Gamer | Todos los derechos reservados</p>
+  </footer>
+
+  <!-- CHATBOT -->
+  <div class="chatbot-icon" id="chatbotIcon">🤖</div>
+  <div class="chatbot-window" id="chatbotWindow">
+    <div class="chat-header">
+      <h4>Asistente IA - GamerVault</h4>
+      <span id="closeChat">✖</span>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="bot-message">👋 ¿Necesitas ayuda para iniciar sesión?</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="chatInput" placeholder="Escribe tu mensaje...">
+      <button id="sendBtn">Enviar</button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+

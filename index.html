@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GamerVault | IA y Recompensas Gamer</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">🎮 GamerVault</div>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="recompensas.html">Recompensas</a>
+      <a href="sobre.html">Sobre Nosotros</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Encuentra tu juego ideal con IA</h1>
+      <p>GamerVault combina inteligencia artificial y recompensas exclusivas para ofrecerte una experiencia gamer personalizada, segura y emocionante.</p>
+      <a href="catalogo.html" class="btn">Explorar catálogo</a>
+    </div>
+  </section>
+
+  <!-- PREVIEW DEL CATÁLOGO -->
+  <section class="catalog-preview">
+    <h2>🎯 Juegos Recomendados</h2>
+    <div class="catalog-grid">
+      <div class="game-card">
+        <img src="img/game1.jpg" alt="Juego 1">
+        <h3>Título del Juego</h3>
+        <p>$24.990</p>
+        <span class="tag">Acción</span>
+      </div>
+      <div class="game-card">
+        <img src="img/game2.jpg" alt="Juego 2">
+        <h3>Nombre del Juego</h3>
+        <p>$19.990</p>
+        <span class="tag">Aventura</span>
+      </div>
+      <div class="game-card">
+        <img src="img/game3.jpg" alt="Juego 3">
+        <h3>Nuevo Lanzamiento</h3>
+        <p>$39.990</p>
+        <span class="tag">Estrategia</span>
+      </div>
+      <div class="game-card">
+        <img src="img/game4.jpg" alt="Juego 4">
+        <h3>Edición Deluxe</h3>
+        <p>$29.990</p>
+        <span class="tag">RPG</span>
+      </div>
+    </div>
+    <a href="catalogo.html" class="btn">Ver catálogo completo</a>
+  </section>
+
+  <!-- PANEL DE LOGROS -->
+  <section class="achievements">
+    <h2>🏆 Tus Logros</h2>
+    <div class="achievements-grid">
+      <div class="achievement-card">
+        ⭐ Nivel 5
+        <div class="progress-container"><div class="progress-bar" style="width: 60%;"></div></div>
+      </div>
+      <div class="achievement-card">
+        🎖️ 1200 Puntos
+        <div class="progress-container"><div class="progress-bar" style="width: 80%;"></div></div>
+      </div>
+      <div class="achievement-card">
+        💎 3 Medallas
+        <div class="progress-container"><div class="progress-bar" style="width: 40%;"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 GamerVault - IA & Recompensas Gamer | Todos los derechos reservados</p>
+  </footer>
+
+  <!-- CHATBOT FLOTANTE -->
+  <div class="chatbot-icon" id="chatbotIcon">🤖</div>
+  <div class="chatbot-window" id="chatbotWindow">
+    <div class="chat-header">
+      <h4>Asistente IA - GamerVault</h4>
+      <span id="closeChat">✖</span>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="bot-message">👋 ¡Hola! Soy tu asistente IA. ¿Qué tipo de juegos te gustan?</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="chatInput" placeholder="Escribe tu mensaje...">
+      <button id="sendBtn">Enviar</button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
