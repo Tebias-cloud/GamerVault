@@ -1,7 +1,7 @@
 // --- CONFIGURACIÓN DEL CHAT ---
 // URLs (¡Correcto!)
 // LÍNEA NUEVA Y CORRECTA (Vercel):
-const API_URL = 'https://gamevault-backend-two.vercel.app/api/chat';
+const API_URL = 'https://gamevault-backend-fn505r6nh-tebias-projects.vercel.app/api/chat';
 // Selectores para ABRIR y CERRAR el chat
 const chatIcon = document.getElementById('chatbotIcon');
 const chatPopup = document.getElementById('chatbotWindow'); // La ventana emergente
