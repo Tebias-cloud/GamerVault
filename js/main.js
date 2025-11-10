@@ -1,6 +1,6 @@
 // --- CONFIGURACIÓN DEL CHAT ---
 // URLs (¡Correcto!)
-const API_URL = 'https://gamevault-backend-hyin.onrender.com/api/chat';
+const API_URL = 'https://gamevault-backenhttps://gamevault-backend-b8ny.onrender.com/api/chat';
 
 // Selectores para ABRIR y CERRAR el chat
 const chatIcon = document.getElementById('chatbotIcon');
