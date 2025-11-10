@@ -1,7 +1,7 @@
 // --- CONFIGURACIÓN DEL CHAT ---
 // URLs (¡Correcto!)
 // LÍNEA NUEVA Y CORRECTA (Vercel):
-const API_URL = 'https://gamevault-backend-fn505r6nh-tebias-projects.vercel.app/api/chat';
+const API_URL = 'https://gamevault-backend-cag8.vercel.app/api/chat';
 // Selectores para ABRIR y CERRAR el chat
 const chatIcon = document.getElementById('chatbotIcon');
 const chatPopup = document.getElementById('chatbotWindow'); // La ventana emergente
@@ -14,9 +14,7 @@ const chatWindow = document.getElementById('chatBody'); // Corregido (es 'chatBo
 
 // --- LÓGICA DE ABRIR Y CERRAR ---
 chatIcon.addEventListener('click', () => {
-  // Asumiendo que tu CSS oculta '.chatbot-window' por defecto
-  // y lo muestra con 'display: flex' o 'display: block'
-  chatPopup.style.display = 'flex'; // O 'block', según tu CSS
+  chatPopup.style.display = 'flex'; 
 });
 
 closeButton.addEventListener('click', () => {
@@ -31,14 +29,14 @@ chatInput.addEventListener('keypress', function(e) {
   }
 });
 
-// --- FUNCIÓN PRINCIPAL (Sin cambios, ya estaba bien) ---
+// --- FUNCIÓN PRINCIPAL ---
 async function enviarMensaje() {
   const mensaje = chatInput.value.trim();
-  if (!mensaje) return; // No enviar mensajes vacíos
+  if (!mensaje) return; 
 
   // 1. Muestra el mensaje del usuario en la ventana
   mostrarMensaje(mensaje, 'usuario');
-  chatInput.value = ''; // Limpia el input
+  chatInput.value = ''; 
 
   try {
     // Muestra un indicador de "escribiendo..." mientras espera
@@ -57,8 +55,8 @@ async function enviarMensaje() {
     const respuestaIA = data.respuesta;
 
     // 4. Borra el "escribiendo..." y muestra la respuesta real de la IA
-    document.querySelector('.bot-loading').remove(); // Borra el mensaje de carga
-    mostrarMensaje(respuestaIA, 'bot'); // Muestra la respuesta de la IA
+    document.querySelector('.bot-loading').remove(); 
+    mostrarMensaje(respuestaIA, 'bot'); 
 
   } catch (error) {
     console.error('Error:', error);
@@ -66,8 +64,26 @@ async function enviarMensaje() {
     if (document.querySelector('.bot-loading')) {
       document.querySelector('.bot-loading').remove();
     }
-    mostrarMensaje('Error de conexión. El servidor puede estar "despertando". Intenta de nuevo en 30 segundos.', 'bot-error');
+    mostrarMensaje('Error de conexión o servidor. Intenta de nuevo.', 'bot-error');
   }
+}
+
+// --- FUNCIÓN AUXILIAR ---
+function mostrarMensaje(mensaje, tipo) {
+  const messageElement = document.createElement('div');
+  
+  if (tipo === 'bot') {
+    messageElement.classList.add('bot-message');
+  } else {
+    messageElement.classList.add(tipo + '-message');
+  }
+  
+  messageElement.textContent = mensaje;
+  
+  chatWindow.appendChild(messageElement);
+  
+  // Auto-scroll al final
+  chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
 // --- FUNCIÓN AUXILIAR (Sin cambios, ya estaba bien) ---
