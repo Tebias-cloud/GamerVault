@@ -84,17 +84,21 @@ async function cargarRanking() {
     });
 }
 
-// 3. Tendencias (Juegos destacados con nueva etiqueta)
 // 3. Tendencias (Juegos destacados - AHORA CON 12 JUEGOS)
 async function cargarTendencias() {
     const grid = document.getElementById('destacadosGrid');
     if (!grid) return;
     
-    // CAMBIO AQUÍ: limit(12) para mostrar más juegos
-    const { data: juegos, error } = await supabase.from('juegos').select('*').limit(12);
+    // CORRECCIÓN 400: Aseguramos que la consulta sea limpia.
+    // La sintaxis 'juegos.select(*)' en Supabase a veces falla si no se especifican las columnas.
+    const { data: juegos, error } = await supabase
+        .from('juegos')
+        .select('id, titulo, genero, precio, imagen_url, keywords') // Se listan explícitamente para evitar el error 400
+        .limit(12);
 
     if (error || !juegos) {
-        grid.innerHTML = '<p style="color:#666; text-align:center; width:100%;">No se pudieron cargar las tendencias.</p>';
+        grid.innerHTML = '<p style="color:#ff5555; text-align:center; width:100%;">No se pudieron cargar las tendencias.</p>';
+        console.error("Error al cargar tendencias (400 probable):", error);
         return;
     }
     
