@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GamerVault | Catálogo de Juegos</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">🎮 GamerVault</div>
+    <nav>
+<nav>
+  <a href="index.html">Inicio</a>
+  <a href="catalogo.html">Catálogo</a>
+  <a href="recompensas.html">Recompensas</a>
+  <a href="sobre.html">Sobre Nosotros</a>
+  <a href="login.html">Login</a>
+</nav>
+
+
+    </nav>
+  </header>
+
+  <section class="catalog-page">
+    <h2>🎮 Explora Nuestro Catálogo</h2>
+    <p>Recomendaciones basadas en tus logros 🧠✨</p>
+
+    <div class="filters">
+      <button class="filter-btn" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="Acción">Acción</button>
+      <button class="filter-btn" data-filter="Aventura">Aventura</button>
+      <button class="filter-btn" data-filter="RPG">RPG</button>
+      <button class="filter-btn" data-filter="Estrategia">Estrategia</button>
+    </div>
+
+    <div class="catalog-grid" id="catalogGrid">
+      <div class="game-card" data-genre="Acción">
+        <img src="img/game1.jpg" alt="Juego 1">
+        <h3>Acción Game</h3>
+        <p>$24.990</p>
+        <span class="tag">Acción</span>
+      </div>
+      <div class="game-card" data-genre="Aventura">
+        <img src="img/game2.jpg" alt="Juego 2">
+        <h3>Aventura Game</h3>
+        <p>$19.990</p>
+        <span class="tag">Aventura</span>
+      </div>
+      <div class="game-card" data-genre="Estrategia">
+        <img src="img/game3.jpg" alt="Juego 3">
+        <h3>Estrategia Game</h3>
+        <p>$39.990</p>
+        <span class="tag">Estrategia</span>
+      </div>
+      <div class="game-card" data-genre="RPG">
+        <img src="img/game4.jpg" alt="Juego 4">
+        <h3>RPG Game</h3>
+        <p>$29.990</p>
+        <span class="tag">RPG</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 GamerVault - IA & Recompensas Gamer | Todos los derechos reservados</p>
+  </footer>
+
+  <!-- CHATBOT -->
+  <div class="chatbot-icon" id="chatbotIcon">🤖</div>
+  <div class="chatbot-window" id="chatbotWindow">
+    <div class="chat-header">
+      <h4>Asistente IA - GamerVault</h4>
+      <span id="closeChat">✖</span>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="bot-message">👋 ¡Hola! ¿Qué tipo de juego buscas hoy?</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="chatInput" placeholder="Escribe tu mensaje...">
+      <button id="sendBtn">Enviar</button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Filtros de catálogo
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const catalogGrid = document.getElementById('catalogGrid');
+    const cards = catalogGrid.querySelectorAll('.game-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+        cards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-genre') === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+
