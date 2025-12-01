@@ -1,64 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GamerVault | Inicio</title>
-  
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamerVault | Inicio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="/GamerVault/css/style.css">
 </head>
 <body>
 
-  <header class="navbar"></header>
+    <header class="navbar"></header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Tu Próxima Aventura <br><span>Comienza Aquí</span></h1>
-      <p>Accede a una colección exclusiva de <span id="totalJuegosCount" style="color:var(--neon); font-weight:bold;">...</span> títulos digitales con recompensas únicas.</p>
-      
-      <div style="margin-top: 30px;">
-        <a href="catalogo.html" class="btn">Ver Catálogo Completo</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="hall-of-fame-section">
-    <h2 style="font-family: 'Orbitron'; font-size: 2.5rem; margin-bottom: 10px; color: #fff; text-shadow: 0 0 10px var(--neon-glow);">
-        🏆 Salón de la Fama
-    </h2>
-    <p style="color: #aaa; margin-bottom: 40px; font-size: 1.1rem;">Los jugadores más legendarios de GamerVault</p>
-    
-    <div id="rankingGrid" class="leaderboard-container">
-        <div class="loading-msg" style="text-align:center; color:#666; font-style:italic;">
-            <i class="fas fa-spinner fa-spin"></i> Buscando leyendas...
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Tu Próxima Aventura <br><span>Comienza Aquí</span></h1>
+            <p>Accede a una colección exclusiva de <span id="totalJuegosCount" style="color:var(--neon); font-weight:bold;">...</span> títulos digitales con recompensas únicas.</p>
+            
+            <div style="margin-top: 30px;">
+                <a href="catalogo.html" class="btn">Ver Catálogo Completo</a>
+            </div>
         </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="catalog-page" style="padding-top: 20px; background: transparent;"> 
-    <div style="text-align: left; padding: 0 5%; max-width: 1400px; margin: 0 auto;">
-        <h2 style="font-size: 2rem; color: #fff; margin-bottom: 5px; font-family: 'Orbitron';">🔥 Tendencias de la Semana</h2>
-        <p style="color: #aaa; margin-bottom: 30px;">Los juegos más buscados por nuestra comunidad.</p>
-    </div>
+    <section class="hall-of-fame-section">
+        <h2 style="font-family: 'Orbitron'; font-size: 2.5rem; margin-bottom: 10px; color: #fff; text-shadow: 0 0 10px var(--neon-glow);">
+            🏆 Salón de la Fama
+        </h2>
+        <p style="color: #aaa; margin-bottom: 40px; font-size: 1.1rem;">Los jugadores más legendarios de GamerVault</p>
+        
+        <div id="rankingGrid" class="leaderboard-container">
+            <div class="loading-msg" style="text-align:center; color:#666; font-style:italic;">
+                <i class="fas fa-spinner fa-spin"></i> Buscando leyendas...
+            </div>
+        </div>
+    </section>
 
-    <div class="catalog-grid" id="destacadosGrid">
-      <div class="loading-msg" style="grid-column: 1/-1; text-align: center; color: #666;">
-          <i class="fas fa-gamepad fa-bounce"></i> Cargando tendencias...
-      </div>
-    </div>
-  </section>
+    <section class="catalog-page" style="padding-top: 20px; background: transparent;"> 
+        <div style="text-align: left; padding: 0 5%; max-width: 1400px; margin: 0 auto;">
+            <h2 style="font-size: 2rem; color: #fff; margin-bottom: 5px; font-family: 'Orbitron';">🔥 Tendencias de la Semana</h2>
+            <p style="color: #aaa; margin-bottom: 30px;">Los juegos más buscados por nuestra comunidad.</p>
+        </div>
 
-  <footer>
-    <p>© 2025 GamerVault - IA & Recompensas Gamer</p>
-  </footer>
+        <div class="catalog-grid" id="destacadosGrid">
+            <div class="loading-msg" style="grid-column: 1/-1; text-align: center; color: #666;">
+                <i class="fas fa-gamepad fa-bounce"></i> Cargando tendencias...
+            </div>
+        </div>
+    </section>
 
-  <script type="module" src="js/navbar.js"></script>
-  <script type="module" src="js/chatbot.js"></script>
-  
-  <script type="module" src="js/index.js"></script>
+    <footer>
+        <p>© 2025 GamerVault - IA & Recompensas Gamer</p>
+    </footer>
+
+    <script type="module" src="/GamerVault/js/navbar.js"></script>
+    <script type="module" src="/GamerVault/js/chatbot.js"></script>
+    <script type="module" src="/GamerVault/js/index.js"></script>
 
 </body>
 </html>
