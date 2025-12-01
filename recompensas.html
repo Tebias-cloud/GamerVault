@@ -3,75 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GamerVault | Recompensas</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>GamerVault | Mercado</title>
+  
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/recompensas.css"> 
+  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
-<body>
+<body style="background-color: #0f0f13;">
 
-  <header class="navbar">
-    <div class="logo">🎮 GamerVault</div>
-    <nav>
-<nav>
-  <a href="index.html">Inicio</a>
-  <a href="catalogo.html">Catálogo</a>
-  <a href="recompensas.html">Recompensas</a>
-  <a href="sobre.html">Sobre Nosotros</a>
-  <a href="login.html">Login</a>
-</nav>
+  <header class="navbar"></header>
 
-
-    </nav>
-  </header>
-
-  <section class="achievements">
-    <h2>💎 Panel de Recompensas</h2>
-    <p>¡Sigue avanzando y desbloquea más logros!</p>
-    <div class="achievements-grid">
-      <div class="achievement-card">
-        ⭐ Nivel 5
-        <div class="progress-container"><div class="progress-bar" style="width: 60%;"></div></div>
+  <div id="reward-ticket-hidden">
+      <div id="ticket-template">
+          <div class="ticket-left">
+              <h2 style="color:#b26bff; margin-bottom:5px;">GAMERVAULT</h2>
+              <h3 id="ticket-title" style="color:white;font-size:1.5rem;">ITEM</h3>
+              <p style="color:#aaa;">Usuario: <span id="ticket-user" style="color:white;">...</span></p>
+              <p style="color:#aaa;">Fecha: <span id="ticket-date">...</span></p>
+              <div id="ticket-code" class="ticket-code">XXXX-XXXX</div>
+          </div>
+          <div class="ticket-right"><i class="fas fa-check-circle" style="font-size:4rem;color:#00ff88;"></i></div>
       </div>
-      <div class="achievement-card">
-        🎖️ 1200 Puntos
-        <div class="progress-container"><div class="progress-bar" style="width: 80%;"></div></div>
-      </div>
-      <div class="achievement-card">
-        💎 3 Medallas
-        <div class="progress-container"><div class="progress-bar" style="width: 40%;"></div></div>
-      </div>
-      <div class="achievement-card">
-        🔥 Racha de 7 días
-        <div class="progress-container"><div class="progress-bar" style="width: 50%;"></div></div>
-      </div>
-      <div class="achievement-card">
-        🏅 Logro Especial
-        <div class="progress-container"><div class="progress-bar" style="width: 20%;"></div></div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 GamerVault - IA & Recompensas Gamer | Todos los derechos reservados</p>
-  </footer>
-
-  <!-- CHATBOT -->
-  <div class="chatbot-icon" id="chatbotIcon">🤖</div>
-  <div class="chatbot-window" id="chatbotWindow">
-    <div class="chat-header">
-      <h4>Asistente IA - GamerVault</h4>
-      <span id="closeChat">✖</span>
-    </div>
-    <div class="chat-body" id="chatBody">
-      <div class="bot-message">👋 ¡Hola! Puedo mostrarte tus logros y recompensas.</div>
-    </div>
-    <div class="chat-input">
-      <input type="text" id="chatInput" placeholder="Escribe tu mensaje...">
-      <button id="sendBtn">Enviar</button>
-    </div>
   </div>
 
-  <script src="js/main.js"></script>
+  <section class="rewards-header">
+      <h1 style="font-family: 'Orbitron'; color: var(--neon); text-shadow: 0 0 10px var(--neon-glow); margin-bottom: 20px;">
+          🛒 Mercado de Recompensas
+      </h1>
+      
+      <div class="user-points-display" id="points-box">
+          <span id="user-points" style="color: #00ff88;">0</span> <i class="fas fa-gem" style="margin-left: 8px;"></i>
+      </div>
+
+      <div id="reward-filters" class="filters-container">
+          <button class="filter-pill active" onclick="filtrarRecompensas('all', this)">Todo</button>
+          <button class="filter-pill" onclick="filtrarRecompensas('avatar', this)">Avatares</button>
+          <button class="filter-pill" onclick="filtrarRecompensas('banner', this)">Banners</button>
+          <button class="filter-pill" onclick="filtrarRecompensas('codigo', this)">Tarjetas & Extras</button>
+      </div>
+  </section>
+
+  <section id="rewards-container">
+      <div style="grid-column:1/-1; text-align:center; color:white; font-size:1.2rem; margin-top:50px;">
+          <i class="fas fa-circle-notch fa-spin"></i> Cargando Mercado...
+      </div>
+  </section>
+
+  <footer><p>© 2025 GamerVault</p></footer>
+
+  <script type="module" src="js/navbar.js"></script>
+  <script type="module" src="js/chatbot.js"></script>
+  <script type="module" src="js/recompensas.js"></script>
+
 </body>
 </html>
-

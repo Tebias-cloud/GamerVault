@@ -3,105 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GamerVault | IA y Recompensas Gamer</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>GamerVault | Inicio</title>
+  
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="logo">🎮 GamerVault</div>
-    <nav>
-      <a href="index.html">Inicio</a>
-      <a href="catalogo.html">Catálogo</a>
-      <a href="recompensas.html">Recompensas</a>
-      <a href="sobre.html">Sobre Nosotros</a>
-      <a href="login.html">Login</a>
-    </nav>
-  </header>
+  <header class="navbar"></header>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <h1>Encuentra tu juego ideal con IA</h1>
-      <p>GamerVault combina inteligencia artificial y recompensas exclusivas para ofrecerte una experiencia gamer personalizada, segura y emocionante.</p>
-      <a href="catalogo.html" class="btn">Explorar catálogo</a>
-    </div>
-  </section>
-
-  <!-- PREVIEW DEL CATÁLOGO -->
-  <section class="catalog-preview">
-    <h2>🎯 Juegos Recomendados</h2>
-    <div class="catalog-grid">
-      <div class="game-card">
-        <img src="img/game1.jpg" alt="Juego 1">
-        <h3>Título del Juego</h3>
-        <p>$24.990</p>
-        <span class="tag">Acción</span>
-      </div>
-      <div class="game-card">
-        <img src="img/game2.jpg" alt="Juego 2">
-        <h3>Nombre del Juego</h3>
-        <p>$19.990</p>
-        <span class="tag">Aventura</span>
-      </div>
-      <div class="game-card">
-        <img src="img/game3.jpg" alt="Juego 3">
-        <h3>Nuevo Lanzamiento</h3>
-        <p>$39.990</p>
-        <span class="tag">Estrategia</span>
-      </div>
-      <div class="game-card">
-        <img src="img/game4.jpg" alt="Juego 4">
-        <h3>Edición Deluxe</h3>
-        <p>$29.990</p>
-        <span class="tag">RPG</span>
-      </div>
-    </div>
-    <a href="catalogo.html" class="btn">Ver catálogo completo</a>
-  </section>
-
-  <!-- PANEL DE LOGROS -->
-  <section class="achievements">
-    <h2>🏆 Tus Logros</h2>
-    <div class="achievements-grid">
-      <div class="achievement-card">
-        ⭐ Nivel 5
-        <div class="progress-container"><div class="progress-bar" style="width: 60%;"></div></div>
-      </div>
-      <div class="achievement-card">
-        🎖️ 1200 Puntos
-        <div class="progress-container"><div class="progress-bar" style="width: 80%;"></div></div>
-      </div>
-      <div class="achievement-card">
-        💎 3 Medallas
-        <div class="progress-container"><div class="progress-bar" style="width: 40%;"></div></div>
+      <h1>Tu Próxima Aventura <br><span>Comienza Aquí</span></h1>
+      <p>Accede a una colección exclusiva de <span id="totalJuegosCount" style="color:var(--neon); font-weight:bold;">...</span> títulos digitales con recompensas únicas.</p>
+      
+      <div style="margin-top: 30px;">
+        <a href="catalogo.html" class="btn">Ver Catálogo Completo</a>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <section class="hall-of-fame-section">
+    <h2 style="font-family: 'Orbitron'; font-size: 2.5rem; margin-bottom: 10px; color: #fff; text-shadow: 0 0 10px var(--neon-glow);">
+        🏆 Salón de la Fama
+    </h2>
+    <p style="color: #aaa; margin-bottom: 40px; font-size: 1.1rem;">Los jugadores más legendarios de GamerVault</p>
+    
+    <div id="rankingGrid" class="leaderboard-container">
+        <div class="loading-msg" style="text-align:center; color:#666; font-style:italic;">
+            <i class="fas fa-spinner fa-spin"></i> Buscando leyendas...
+        </div>
+    </div>
+  </section>
+
+  <section class="catalog-page" style="padding-top: 20px; background: transparent;"> 
+    <div style="text-align: left; padding: 0 5%; max-width: 1400px; margin: 0 auto;">
+        <h2 style="font-size: 2rem; color: #fff; margin-bottom: 5px; font-family: 'Orbitron';">🔥 Tendencias de la Semana</h2>
+        <p style="color: #aaa; margin-bottom: 30px;">Los juegos más buscados por nuestra comunidad.</p>
+    </div>
+
+    <div class="catalog-grid" id="destacadosGrid">
+      <div class="loading-msg" style="grid-column: 1/-1; text-align: center; color: #666;">
+          <i class="fas fa-gamepad fa-bounce"></i> Cargando tendencias...
+      </div>
+    </div>
+  </section>
+
   <footer>
-    <p>© 2025 GamerVault - IA & Recompensas Gamer | Todos los derechos reservados</p>
+    <p>© 2025 GamerVault - IA & Recompensas Gamer</p>
   </footer>
 
-  <!-- CHATBOT FLOTANTE -->
-  <div class="chatbot-icon" id="chatbotIcon">🤖</div>
-  <div class="chatbot-window" id="chatbotWindow">
-    <div class="chat-header">
-      <h4>Asistente IA - GamerVault</h4>
-      <span id="closeChat">✖</span>
-    </div>
-    <div class="chat-body" id="chatBody">
-      <div class="bot-message">👋 ¡Hola! Soy tu asistente IA. ¿Qué tipo de juegos te gustan?</div>
-    </div>
-    <div class="chat-input">
-      <input type="text" id="chatInput" placeholder="Escribe tu mensaje...">
-      <button id="sendBtn">Enviar</button>
-    </div>
-  </div>
+  <script type="module" src="js/navbar.js"></script>
+  <script type="module" src="js/chatbot.js"></script>
+  
+  <script type="module" src="js/index.js"></script>
 
-  <script src="js/main.js"></script>
 </body>
 </html>

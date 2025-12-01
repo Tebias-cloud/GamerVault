@@ -3,107 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GamerVault | Catálogo de Juegos</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>GamerVault | Catálogo Premium</title>
+  
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="css/style.css">     
+  <link rel="stylesheet" href="css/catalogo.css"> <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body>
+<body style="background-color: #0f0f13;">
 
-  <header class="navbar">
-    <div class="logo">🎮 GamerVault</div>
-    <nav>
-<nav>
-  <a href="index.html">Inicio</a>
-  <a href="catalogo.html">Catálogo</a>
-  <a href="recompensas.html">Recompensas</a>
-  <a href="sobre.html">Sobre Nosotros</a>
-  <a href="login.html">Login</a>
-</nav>
-
-
-    </nav>
-  </header>
+  <header class="navbar"></header>
 
   <section class="catalog-page">
-    <h2>🎮 Explora Nuestro Catálogo</h2>
-    <p>Recomendaciones basadas en tus logros 🧠✨</p>
+    <div class="search-section">
+        <h2 class="page-title" style="font-family:'Orbitron'; color:#b26bff; font-size:2.5rem; margin-bottom:10px;">Catálogo Exclusivo</h2>
+        <p class="page-subtitle" style="color:#aaa; margin-bottom:30px;">Explora, compra y domina.</p>
 
-    <div class="filters">
-      <button class="filter-btn" data-filter="all">Todos</button>
-      <button class="filter-btn" data-filter="Acción">Acción</button>
-      <button class="filter-btn" data-filter="Aventura">Aventura</button>
-      <button class="filter-btn" data-filter="RPG">RPG</button>
-      <button class="filter-btn" data-filter="Estrategia">Estrategia</button>
+        <div class="search-container" style="max-width:600px; margin:0 auto 30px; position:relative;">
+            <input type="text" id="searchInput" style="width:100%; padding:15px 50px 15px 20px; background:#111; border:1px solid #333; border-radius:50px; color:white; outline:none;" placeholder="Busca por nombre, género o apodo...">
+            <i class="fas fa-search" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); color:#666;"></i>
+        </div>
     </div>
 
+    <div class="filters" id="filterContainer" style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:40px;"></div>
+
     <div class="catalog-grid" id="catalogGrid">
-      <div class="game-card" data-genre="Acción">
-        <img src="img/game1.jpg" alt="Juego 1">
-        <h3>Acción Game</h3>
-        <p>$24.990</p>
-        <span class="tag">Acción</span>
-      </div>
-      <div class="game-card" data-genre="Aventura">
-        <img src="img/game2.jpg" alt="Juego 2">
-        <h3>Aventura Game</h3>
-        <p>$19.990</p>
-        <span class="tag">Aventura</span>
-      </div>
-      <div class="game-card" data-genre="Estrategia">
-        <img src="img/game3.jpg" alt="Juego 3">
-        <h3>Estrategia Game</h3>
-        <p>$39.990</p>
-        <span class="tag">Estrategia</span>
-      </div>
-      <div class="game-card" data-genre="RPG">
-        <img src="img/game4.jpg" alt="Juego 4">
-        <h3>RPG Game</h3>
-        <p>$29.990</p>
-        <span class="tag">RPG</span>
+      <div style="text-align:center; color:#666; grid-column:1/-1; padding:50px;">
+          <i class="fas fa-satellite-dish fa-spin"></i> Sincronizando catálogo...
       </div>
     </div>
   </section>
 
-  <footer>
-    <p>© 2025 GamerVault - IA & Recompensas Gamer | Todos los derechos reservados</p>
-  </footer>
+  <div id="gameModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal()"><i class="fas fa-times"></i></button>
+      
+      <div class="modal-flex-container">
+        <div class="modal-left">
+          <img id="modalImg" src="" alt="Portada">
+          <div id="modalPriceBadge" class="modal-price-badge"></div>
+        </div>
+        
+        <div class="modal-right">
+          <div class="modal-header-info">
+              <h2 id="modalTitle">Título</h2>
+              <div class="modal-meta">
+                <div id="modalGenresContainer"></div>
+                <span id="modalPointsBadge" class="points-pill"></span>
+              </div>
+          </div>
+          
+          <div class="modal-body-info">
+            <h3><i class="fas fa-info-circle"></i> Descripción</h3>
+            <p id="modalDesc">Cargando...</p>
+          </div>
 
-  <!-- CHATBOT -->
-  <div class="chatbot-icon" id="chatbotIcon">🤖</div>
-  <div class="chatbot-window" id="chatbotWindow">
-    <div class="chat-header">
-      <h4>Asistente IA - GamerVault</h4>
-      <span id="closeChat">✖</span>
-    </div>
-    <div class="chat-body" id="chatBody">
-      <div class="bot-message">👋 ¡Hola! ¿Qué tipo de juego buscas hoy?</div>
-    </div>
-    <div class="chat-input">
-      <input type="text" id="chatInput" placeholder="Escribe tu mensaje...">
-      <button id="sendBtn">Enviar</button>
+          <div class="modal-footer-action">
+             <div id="modalBtnContainer"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <script src="js/main.js"></script>
-  <script>
-    // Filtros de catálogo
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const catalogGrid = document.getElementById('catalogGrid');
-    const cards = catalogGrid.querySelectorAll('.game-card');
+  <footer><p>© 2025 GamerVault</p></footer>
 
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const filter = btn.getAttribute('data-filter');
-        cards.forEach(card => {
-          if (filter === 'all' || card.getAttribute('data-genre') === filter) {
-            card.style.display = 'block';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-  </script>
+  <script type="module" src="js/navbar.js"></script>
+  <script type="module" src="js/chatbot.js"></script>
+  <script type="module" src="js/catalogo.js"></script>
+
 </body>
 </html>
-

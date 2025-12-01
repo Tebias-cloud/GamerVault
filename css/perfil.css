@@ -1,0 +1,331 @@
+/* =========================================
+   ESTILOS PERFIL (MEJORADOS)
+   ========================================= */
+
+/* (Estilos generales del perfil) */
+.profile-section { padding: 40px 20px; flex: 1; display: flex; flex-direction: column; }
+#profile-content { display: none; width: 100%; gap: 30px; flex-wrap: wrap; justify-content: center; align-items: flex-start; max-width: 1100px; margin: 0 auto; }
+.tab-column-wrapper { flex: 2; min-width: 300px; display: flex; flex-direction: column; }
+
+/* Sidebar */
+.profile-sidebar { background: var(--card-bg); padding: 30px; border-radius: 20px; border: 1px solid var(--card-border); text-align: center; flex: 1; min-width: 280px; max-width: 350px; height: fit-content; }
+.profile-sidebar p { color: #aaa; font-size: 0.9rem; }
+.profile-sidebar hr { border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0; }
+.profile-sidebar > div > p { display: flex; justify-content: space-between; margin-bottom: 10px; }
+.profile-sidebar span { font-weight: bold; }
+#sidebar-level { color: var(--gold); }
+#sidebar-points { color: var(--secondary); }
+
+/* Avatar */
+.avatar-edit-container { position: relative; margin-bottom: 10px; }
+.current-avatar-display { width: 140px; height: 140px; border-radius: 50%; border: 4px solid var(--neon); margin: 0 auto; overflow: hidden; position: relative; cursor: pointer; transition: 0.3s; }
+.current-avatar-display:hover { box-shadow: 0 0 15px var(--neon-glow); }
+.current-avatar-display img { width: 100%; height: 100%; object-fit: cover; }
+.avatar-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.7); color: white; display: flex; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; font-size: 0.9rem; font-weight: 600; }
+.current-avatar-display:hover .avatar-overlay { opacity: 1; }
+
+.avatar-dropdown { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); width: 280px; background: #0f0f18; border: 1px solid var(--neon); border-radius: 10px; padding: 15px; margin-top: 10px; z-index: 50; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.avatar-dropdown.active { display: block; }
+.avatar-grid { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; max-height: 200px; overflow-y: auto; padding-right: 5px; }
+.avatar-grid::-webkit-scrollbar { width: 4px; }
+.avatar-grid::-webkit-scrollbar-thumb { background: var(--neon); border-radius: 4px; }
+.avatar-option { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #444; cursor: pointer; overflow: hidden; opacity: 0.6; transition: 0.2s; flex-shrink: 0; }
+.avatar-option img { width: 100%; height: 100%; }
+/* CRÍTICO: Estilo para el ícono seleccionado */
+.avatar-option.selected { 
+    transform: scale(1.1); 
+    opacity: 1; 
+    border-color: var(--neon); 
+}
+.avatar-option:hover { transform: scale(1.1); opacity: 1; border-color: var(--neon); }
+#btn-save-avatar { width: 100%; margin-top: 10px; background: var(--neon); color: white; padding: 8px; border: none; border-radius: 6px; cursor: pointer; }
+
+/* Username Inline Edit */
+.username-edit-box { display: flex; align-items: center; justify-content: center; margin: 15px 0; }
+.sidebar-username-input { background: transparent; border: none; text-align: center; font-family: 'Orbitron'; font-size: 1.5rem; color: var(--neon); font-weight: bold; width: 150px; text-shadow: 0 0 5px var(--neon-glow); transition: 0.3s; }
+.sidebar-username-input:not(:disabled) { border-bottom: 2px solid var(--secondary); color: white; text-shadow: none; outline: none; }
+#edit-username-btn { background: none; border: none; color: #666; cursor: pointer; transition: 0.2s; font-size: 0.9rem; margin-left: 5px; }
+#edit-username-btn:hover { color: var(--secondary); }
+
+/* Tabs */
+.tab-container { padding: 20px 40px 40px; border-top: 3px solid var(--neon); background: var(--card-bg); border-radius: 20px; border: 1px solid var(--card-border); }
+.tab-headers { display: flex; justify-content: space-around; border-bottom: 2px solid #333; margin-bottom: 30px; }
+.tab-button { flex-grow: 1; background: none; border: none; padding: 15px; color: #aaa; font-weight: 600; cursor: pointer; transition: 0.3s; font-family: 'Orbitron'; border-bottom: 2px solid transparent; }
+.tab-button.active, .tab-button:hover { color: var(--neon); border-bottom-color: var(--neon); text-shadow: 0 0 5px var(--neon-glow); }
+.tab-content { display: none; animation: fadeIn 0.4s ease; }
+.tab-content.active { display: block; }
+.tab-content h3 { font-size: 1.2rem; color: var(--neon); margin-bottom: 20px; border-bottom: 1px dashed #333; padding-bottom: 10px; }
+
+/* Grids */
+.profile-grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 20px; min-height: 250px; }
+.profile-list-container { display: flex; flex-direction: column; gap: 10px; }
+
+/* Library Card (Interactiva) */
+.library-card { background: #111; border: 1px solid #333; border-radius: 10px; overflow: hidden; position: relative; width: 100%; height: 240px; display: flex; flex-direction: column; transition: 0.3s; }
+.library-card:hover { transform: translateY(-5px); box-shadow: 0 0 15px rgba(178, 107, 255, 0.2); border-color: var(--neon); }
+.library-img-container { height: 120px; overflow: hidden; position: relative; }
+.library-img-container img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.3s; }
+.library-card:hover .library-img-container img { opacity: 1; transform: scale(1.05); }
+.library-copy-tag { position: absolute; top: 5px; right: 5px; background: var(--neon); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
+.library-content { padding: 10px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.library-title { font-size: 0.85rem; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: bold; }
+
+/* Code Reveal (Hover) */
+.library-code-container { cursor: pointer; margin-bottom: 5px; position: relative; overflow: hidden; border-radius: 4px; }
+.library-code-blur { 
+    filter: blur(4px); background: #222; color: var(--secondary); padding: 5px; 
+    font-family: monospace; font-size: 0.8rem; transition: 0.3s; 
+    user-select: none; 
+}
+.library-code-container:hover .library-code-blur { filter: blur(0); background: rgba(0, 255, 136, 0.1); }
+.library-code-container:active .library-code-blur { transform: scale(0.98); } 
+
+.library-actions { display: flex; gap: 5px; }
+.library-btn-action { flex: 1; padding: 6px 0; background: #333; color: white; border: none; border-radius: 4px; cursor: pointer; transition: 0.2s; font-size: 0.7rem; }
+.library-btn-action:hover { background: #555; transform: translateY(-2px); }
+.library-btn-action:active { transform: scale(0.95); }
+.btn-print { background: var(--gold); color: #000; }
+.btn-print:hover { background: #ffea70; }
+
+/* Rewards List */
+.reward-history-card { 
+    display: flex; 
+    align-items: center; 
+    background: #1a1a20; 
+    padding: 15px; 
+    border-radius: 10px; 
+    border-left: 4px solid var(--secondary); 
+    transition: 0.3s; 
+    justify-content: space-between;
+}
+.reward-history-card:hover { 
+    transform: translateX(5px); 
+    background: #222; 
+}
+.reward-icon-wrapper { 
+    width: 40px; 
+    text-align: center; 
+    margin-right: 15px; 
+    flex-shrink: 0;
+}
+.reward-icon { 
+    font-size: 1.5rem; 
+}
+.reward-avatar-img { 
+    width: 35px; 
+    height: 35px; 
+    border-radius: 50%; 
+    border: 2px solid var(--neon); 
+    display: block;
+}
+.reward-details { 
+    flex-grow: 1; 
+}
+.reward-name { 
+    font-weight: bold; 
+    font-size: 0.95rem; 
+    color: white;
+}
+.reward-cost { 
+    font-size: 0.8rem; 
+    color: var(--secondary); 
+    font-weight: 600;
+}
+.reward-date { 
+    font-size: 0.75rem; 
+    color: #666; 
+    margin-left: 10px;
+}
+.reward-actions-group { margin-left: 15px; }
+.btn-ticket { padding: 6px 12px; background: var(--neon); color: white; border: none; border-radius: 4px; cursor: pointer; transition: 0.2s; font-size: 0.75rem; font-weight: 600; }
+.btn-ticket:hover { background: #9b4dff; }
+
+/* Wishlist */
+.wishlist-card { 
+    background: #1a1a20; 
+    border: 1px solid #333; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    text-align: center; 
+    transition: 0.3s; 
+    display: flex;
+    flex-direction: column;
+}
+.wishlist-card:hover { 
+    transform: translateY(-5px); 
+    border-color: var(--neon); 
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+.wishlist-img-wrapper {
+    width: 100%;
+    height: 160px; 
+    overflow: hidden;
+    position: relative;
+    background: #000;
+}
+.wishlist-img-wrapper img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    opacity: 0.9;
+    transition: transform 0.3s;
+}
+.wishlist-card:hover .wishlist-img-wrapper img {
+    transform: scale(1.1);
+    opacity: 1;
+}
+.wishlist-info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+.wishlist-title { 
+    font-size: 0.95rem; 
+    font-weight: bold; 
+    color: white;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+.wishlist-btn-view { 
+    width: 100%; 
+    padding: 10px; 
+    background: rgba(178, 107, 255, 0.1); 
+    border: 1px solid var(--neon); 
+    color: var(--neon); 
+    font-weight: bold; 
+    cursor: pointer; 
+    transition: 0.2s; 
+    border-radius: 6px;
+}
+.wishlist-btn-view:hover { 
+    background: var(--neon); 
+    color: white;
+}
+
+/* ------------------------------------------------ */
+/* === ESTILOS TICKET PDF (FINAL Y COMPACTO) === */
+/* ------------------------------------------------ */
+
+#print-ticket-hidden {
+    position: fixed;
+    top: -9999px;
+    left: -9999px;
+    visibility: hidden; 
+    width: 0;
+    height: 0;
+}
+
+#ticket-template {
+    width: 110mm; 
+    
+    /* CRÍTICO: 35mm top margin para centrar VISUALMENTE el bloque en la página A5. */
+    margin: 35mm auto 10mm auto; 
+    padding: 0;
+    
+    color: #fff;
+    background-color: #000; 
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    border: 3px solid var(--neon, #b26bff); 
+    border-radius: 5px;
+    overflow: hidden;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ticket-main-content {
+    /* Padding interno compacto */
+    padding: 25px 15mm 20px 15mm; 
+    width: 100%;
+    box-sizing: border-box;
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Compactar todo el contenido arriba */
+    justify-content: flex-start; 
+    gap: 10px; 
+}
+
+.ticket-header {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+    color: var(--neon, #b26bff); 
+    padding: 10px 0 5px;
+    letter-spacing: 2px;
+}
+
+.ticket-subheader {
+    font-size: 0.7rem;
+    text-align: center;
+    color: #888;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+.ticket-image-box {
+    width: 100%; 
+    max-width: 180px;
+    height: 130px; 
+    overflow: hidden;
+    margin-bottom: 10px; 
+    border: 2px solid var(--neon, #b26bff);
+    border-radius: 5px;
+}
+#ticket-juego-imagen { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    display: block; 
+    background: #333; 
+}
+
+.ticket-info { text-align: center; margin-bottom: 10px; }
+.ticket-label { font-size: 0.6rem; color: var(--neon, #b26bff); margin-bottom: 3px; letter-spacing: 1px; font-weight: 600; text-transform: uppercase; }
+#ticket-juego-titulo { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: #fff; letter-spacing: 1px; margin-top: 5px; word-break: break-word; }
+
+.ticket-key-box {
+    background-color: #111; 
+    padding: 10px;
+    margin-bottom: 15px; 
+    border-radius: 4px;
+    border: 1px solid #333;
+    text-align: center;
+    width: 100%;
+}
+#ticket-clave { font-family: 'Orbitron', sans-serif; font-size: 1rem; color: #00ff88; font-weight: 700; word-break: break-all; }
+
+
+.ticket-metadata-grid {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding-top: 15px;
+    border-top: 1px solid #333;
+    margin-bottom: 15px; 
+}
+
+.ticket-meta-item { text-align: center; width: 33%; }
+.ticket-meta-item span { display: block; font-size: 0.8rem; color: #ccc; font-weight: 400; margin-top: 5px; }
+
+
+.ticket-cert {
+    font-size: 0.6rem;
+    text-align: center;
+    color: #555;
+    padding: 10px 15mm; 
+    background-color: #111;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }

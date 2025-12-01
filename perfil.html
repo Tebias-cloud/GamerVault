@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GamerVault | Mi Perfil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/perfil.css"> 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script> 
+</head>
+<body>
+
+  <header class="navbar"></header>
+  
+  <div id="print-ticket-hidden">
+    <div id="ticket-template">
+        <div class="ticket-header">GAMERVAULT</div>
+        <div class="ticket-subheader">COMPROBANTE DE PROPIEDAD DIGITAL</div>
+        
+        <div class="ticket-main-content">
+
+            <div class="ticket-image-box">
+                <img id="ticket-juego-imagen" src="" alt="Juego">
+            </div>
+
+            <div class="ticket-info">
+                <p class="ticket-label">JUEGO ADQUIRIDO</p>
+                <h1 id="ticket-juego-titulo"></h1> 
+            </div>
+            
+            <div class="ticket-key-box">
+                <p class="ticket-label">CLAVE DE ACTIVACIÓN</p>
+                <span id="ticket-clave">XXXX-XXXX-XXXX</span>
+            </div>
+
+            <div class="ticket-metadata-grid">
+                <div class="ticket-meta-item">
+                    <p class="ticket-label">ID TRANSACCIÓN</p>
+                    <span id="ticket-id-transaccion">#73088</span>
+                </div>
+                <div class="ticket-meta-item">
+                    <p class="ticket-label">FECHA DE EMISIÓN</p>
+                    <span id="ticket-date">28-11-2025</span>
+                </div>
+                <div class="ticket-meta-item">
+                    <p class="ticket-label">PROPIETARIO</p>
+                    <span id="ticket-owner"></span>
+                </div>
+            </div>
+        </div>
+        
+        <p class="ticket-cert">Este documento certifica la compra legal en la plataforma GamerVault. gamer-vault.com</p>
+        <div class="ticket-separator"></div> </div>
+</div>
+
+
+  <section class="profile-section">
+    
+    <div id="loading-overlay">
+        <div>
+            <i class="fas fa-circle-notch fa-spin"></i>
+            <p>Cargando Perfil...</p>
+        </div>
+    </div>
+
+    <div id="guest-message" class="guest-container" style="display:none;">
+        <div class="guest-card">
+            <div class="guest-icon-box"><i class="fas fa-user-lock"></i></div>
+            <h2>Perfil Protegido</h2>
+            <p>Necesitas identificarte para acceder a tu nivel y estadísticas.</p>
+            <a href="login.html" class="btn-neon">INICIAR SESIÓN</a>
+        </div>
+    </div>
+
+    <div id="profile-content" style="display: none;">
+        
+        <div class="profile-sidebar">
+            
+            <div class="avatar-edit-container" id="avatar-edit-container">
+                <div class="current-avatar-display">
+                    <img id="preview-avatar" src="" alt="Avatar">
+                    <div class="avatar-overlay" onclick="toggleAvatarMenu()">
+                        <span>Cambiar Icono</span>
+                    </div>
+                </div>
+                <div class="avatar-dropdown" id="avatar-dropdown">
+                    <div class="avatar-grid" id="avatar-grid"></div>
+                    <button id="btn-save-avatar" class="btn-small">Guardar Avatar</button>
+                </div>
+            </div>
+            
+            <div class="username-edit-box">
+                <input type="text" id="input-username" class="sidebar-username-input" maxlength="15" disabled>
+                <button id="edit-username-btn" title="Editar Nombre"><i class="fas fa-pen"></i></button>
+            </div>
+
+            <p>Miembro de GamerVault</p>
+            <hr>
+            <div>
+                <p>🏆 Nivel: <span id="sidebar-level">1</span></p>
+                <p>💎 Puntos: <span id="sidebar-points">0</span></p>
+            </div>
+        </div>
+
+        <div class="tab-column-wrapper">
+            
+            <div class="tab-container profile-editor">
+                
+                <div class="tab-headers">
+                    <button class="tab-button active" data-tab="library">
+                        <i class="fas fa-gamepad"></i> Mi Biblioteca
+                    </button>
+                    <button class="tab-button" data-tab="wishlist">
+                        <i class="fas fa-heart"></i> Wishlist
+                    </button>
+                    <button class="tab-button" data-tab="rewards">
+                        <i class="fas fa-trophy"></i> Canjeados
+                    </button>
+                </div>
+                
+                <div class="tab-content-wrapper">
+                    
+                    <div id="library" class="tab-content active">
+                        <h3>Juegos Comprados (Llaves)</h3>
+                        <div id="library-grid" class="profile-grid-container">
+                            <div class="text-muted-center">Cargando tus juegos...</div>
+                        </div>
+                    </div>
+                    
+                    <div id="wishlist" class="tab-content">
+                        <h3>Lista de Deseos</h3>
+                        <div id="wishlist-grid" class="profile-grid-container">
+                            <div class="text-muted-center">Tu lista de deseos está vacía. ¡Explora el catálogo!</div>
+                        </div>
+                    </div>
+
+                    <div id="rewards" class="tab-content">
+                        <h3>Historial de Canjes de Mercado</h3>
+                        <div id="rewards-grid" class="profile-list-container">
+                            <div class="text-muted-center">Cargando historial...</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+  </section>
+
+  <footer><p>© 2025 GamerVault</p></footer>
+
+  <script type="module" src="js/navbar.js"></script>
+  <script type="module" src="js/chatbot.js"></script>
+  <script type="module" src="js/perfil.js"></script>
+</body>
+</html>
