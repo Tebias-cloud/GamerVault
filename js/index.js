@@ -30,6 +30,7 @@ async function cargarRanking() {
     if (!rankingContainer) return;
     
     // Consulta a Supabase: Top 5 usuarios por puntos
+    // NOTA: La tabla 'perfiles' ya usa 'id', por lo que esta consulta es correcta
     const { data: usuarios, error } = await supabase
         .from('perfiles')
         .select('username, puntos, avatar')
@@ -89,16 +90,15 @@ async function cargarTendencias() {
     const grid = document.getElementById('destacadosGrid');
     if (!grid) return;
     
-    // CORRECCIÓN 400: Aseguramos que la consulta sea limpia.
-    // La sintaxis 'juegos.select(*)' en Supabase a veces falla si no se especifican las columnas.
+    // CORRECCIÓN CRÍTICA: Cambiado 'id' por 'idjuego' para coincidir con la tabla SQL.
     const { data: juegos, error } = await supabase
         .from('juegos')
-        .select('id, titulo, genero, precio, imagen_url, keywords') // Se listan explícitamente para evitar el error 400
+        .select('idjuego, titulo, genero, precio, imagen_url, keywords') 
         .limit(12);
 
     if (error || !juegos) {
         grid.innerHTML = '<p style="color:#ff5555; text-align:center; width:100%;">No se pudieron cargar las tendencias.</p>';
-        console.error("Error al cargar tendencias (400 probable):", error);
+        console.error("Error al cargar tendencias:", error);
         return;
     }
     
