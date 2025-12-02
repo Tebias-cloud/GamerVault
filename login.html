@@ -30,67 +30,75 @@
 
   <header class="navbar"></header>
 
-  <section class="login-section">
-      <div class="login-card">
-          <h2>👾 Iniciar Sesión</h2>
-          <form id="auth-form">
-              <div class="form-group">
-                  <label>Correo Electrónico</label>
-                  <input type="email" id="email" placeholder="gamer@ejemplo.com" required>
-              </div>
-              <div class="form-group">
-                  <label>Contraseña</label>
-                  <input type="password" id="password" placeholder="••••••••" required>
-              </div>
-              <button type="submit" class="btn-submit" id="submitBtn">Entrar / Registrarse</button>
-          </form>
+<section class="login-section">
+      <div class="login-card">
+          <h2>👾 Iniciar Sesión</h2>
+          <form id="auth-form">
+                            <button type="submit" class="btn-submit" id="submitBtn">Entrar / Registrarse</button>
+          </form>
 
-          <div class="divider"><span>O continúa con</span></div>
+          <div class="divider"><span>O continúa con</span></div>
 
-          <button id="google-login-btn" class="btn-google">
-              <i class="fab fa-google"></i> Google
-          </button>
-      </div>
-  </section>
+          <button id="google-login-btn" class="btn-google">
+              <i class="fab fa-google"></i> Google
+          </button>
+      </div>
+  </section>
 
-  <footer><p>© 2025 GamerVault</p></footer>
+  <footer><p>© 2025 GamerVault</p></footer>
 
-  <script type="module" src="js/navbar.js"></script>
-  <script type="module" src="js/chatbot.js"></script>
-  <script type="module">
-      import { supabase } from './js/supabaseClient.js';
+  <script type="module" src="js/navbar.js"></script>
+  <script type="module" src="js/chatbot.js"></script>
+  
+    <script type="module">
+      import { supabase } from './js/supabaseClient.js'; // Asumimos esta ruta es correcta
 
-      const form = document.getElementById('auth-form');
-      const btn = document.getElementById('submitBtn');
+      const form = document.getElementById('auth-form');
+      const btn = document.getElementById('submitBtn');
 
-      form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          const email = document.getElementById('email').value;
-          const password = document.getElementById('password').value;
-          
-          btn.innerText = "Procesando..."; btn.disabled = true;
+      // CRÍTICO: Definir la URL de redirección para GitHub Pages
+      // Asume que el repositorio es /GamerVault/
+      const repoBase = window.location.origin + '/GamerVault';
+      const redirectUrl = repoBase + '/index.html'; 
 
-          // Intento de Login
-          let { error } = await supabase.auth.signInWithPassword({ email, password });
-          
-          if (error) {
-              // Si falla, intentamos Registro
-              const { error: signUpError } = await supabase.auth.signUp({ email, password });
-              if (signUpError) {
-                  Swal.fire('Error', 'Credenciales inválidas o error en registro.', 'error');
-                  btn.innerText = "Entrar / Registrarse"; btn.disabled = false;
-              } else {
-                  Swal.fire('Bienvenido', 'Registro exitoso. ¡Revisa tu correo!', 'success');
+      form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+          
+          btn.innerText = "Procesando..."; btn.disabled = true;
+
+          // Intento de Login
+          let { error } = await supabase.auth.signInWithPassword({ email, password });
+          
+          if (error) {
+              // Si falla, intentamos Registro
+              const { error: signUpError } = await supabase.auth.signUp({ email, password });
+              if (signUpError) {
+                  Swal.fire('Error', 'Credenciales inválidas o error en registro.', 'error');
+                  btn.innerText = "Entrar / Registrarse"; btn.disabled = false;
+              } else {
+                  Swal.fire('Bienvenido', 'Registro exitoso. ¡Revisa tu correo!', 'success');
+                  // Nota: En un registro exitoso, el usuario debe ir a verificar el correo, 
+                  // NO debe redirigir inmediatamente, por eso no agregamos el window.location.href aquí.
+              }
+          } else {
+              // Login Exitoso
+              window.location.href = repoBase + '/perfil.html'; // Usamos repoBase para perfil.html
+          }
+           btn.innerText = "Entrar / Registrarse"; btn.disabled = false;
+      });
+
+      document.getElementById('google-login-btn').addEventListener('click', async () => {
+          await supabase.auth.signInWithOAuth({ 
+              provider: 'google', 
+              options: { 
+                  // CRÍTICO: Usamos la URL completa de GitHub Pages para el redirect
+                  redirectTo: redirectUrl 
               }
-          } else {
-              window.location.href = 'perfil.html';
-          }
-      });
-
-      document.getElementById('google-login-btn').addEventListener('click', async () => {
-          await supabase.auth.signInWithOAuth({ provider: 'google' });
-      });
-  </script>
+          });
+      });
+  </script>
 
 </body>
 </html>
