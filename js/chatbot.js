@@ -447,7 +447,7 @@ function addChips(options) {
 function showTyping(show) { chat.type.style.display = show ? 'block' : 'none'; if(show) scrollToBottom(); }
 function scrollToBottom() { chat.body.scrollTop = chat.body.scrollHeight; }
 function saveHistory() { localStorage.setItem('gb_history', chat.body.innerHTML); }
-function playSound() { clickSound.currentTime = 0; clickSound.play().catch(e=>{}); }
+
 const wait = (ms) => new Promise(r => setTimeout(r, ms));
 
 chat.btn.onclick = () => processMessage();
