@@ -192,8 +192,6 @@ let allGames = [];
 let isInitialized = false;
 let currentUserProfile = null;
 
-const clickSound = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=pop-39222.mp3");
-clickSound.volume = 0.15;
 
 // --- 5. CARGA INTELIGENTE ---
 async function initSmartBot() {
