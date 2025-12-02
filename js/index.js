@@ -17,8 +17,8 @@ async function initPage() {
 
 // 1. Contador de Juegos (Hero Section)
 async function cargarContadores() {
-    // Consulta por conteo, no necesita cambio de columna
-    const { count } = await supabase.from('juegos').select('*', { count: 'exact', head: true }); 
+    // CORRECCIÓN FINAL: Usamos 'idjuego' explícitamente en el select para el conteo.
+    const { count } = await supabase.from('juegos').select('idjuego', { count: 'exact', head: true }); 
     if (count !== null) {
         const el = document.getElementById('totalJuegosCount');
         if (el) el.innerText = count + "+";
@@ -90,7 +90,7 @@ async function cargarTendencias() {
     const grid = document.getElementById('destacadosGrid');
     if (!grid) return;
     
-    // CORRECCIÓN CRÍTICA 1: Cambiado 'id' por 'idjuego' para coincidir con la tabla SQL.
+    // CORRECCIÓN CRÍTICA 2: Usar 'idjuego'
     const { data: juegos, error } = await supabase
         .from('juegos')
         .select('idjuego, titulo, genero, precio, imagen_url, keywords') 
