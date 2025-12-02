@@ -4,7 +4,6 @@ import { supabase } from './supabaseClient.js';
 async function initPage() {
     console.log("🚀 Iniciando Home...");
     try {
-        // Cargamos todo en paralelo para mayor velocidad
         await Promise.all([
             cargarContadores(), 
             cargarRanking(), 
@@ -17,7 +16,8 @@ async function initPage() {
 
 // 1. Contador de Juegos (Hero Section)
 async function cargarContadores() {
-    // CORRECCIÓN FINAL: Usamos 'idjuego' explícitamente en el select para el conteo.
+    // CORRECCIÓN CRÍTICA: Usamos 'idjuego' explícitamente en el select para el conteo,
+    // eliminando el error 400 que ocurría al intentar usar 'id'.
     const { count } = await supabase.from('juegos').select('idjuego', { count: 'exact', head: true }); 
     if (count !== null) {
         const el = document.getElementById('totalJuegosCount');
@@ -90,7 +90,7 @@ async function cargarTendencias() {
     const grid = document.getElementById('destacadosGrid');
     if (!grid) return;
     
-    // CORRECCIÓN CRÍTICA 2: Usar 'idjuego'
+    // Usar 'idjuego'
     const { data: juegos, error } = await supabase
         .from('juegos')
         .select('idjuego, titulo, genero, precio, imagen_url, keywords') 
