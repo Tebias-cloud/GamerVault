@@ -17,7 +17,8 @@ async function initPage() {
 
 // 1. Contador de Juegos (Hero Section)
 async function cargarContadores() {
-    const { count } = await supabase.from('juegos').select('*', { count: 'exact', head: true });
+    // Consulta por conteo, no necesita cambio de columna
+    const { count } = await supabase.from('juegos').select('*', { count: 'exact', head: true }); 
     if (count !== null) {
         const el = document.getElementById('totalJuegosCount');
         if (el) el.innerText = count + "+";
@@ -29,8 +30,7 @@ async function cargarRanking() {
     const rankingContainer = document.getElementById('rankingGrid');
     if (!rankingContainer) return;
     
-    // Consulta a Supabase: Top 5 usuarios por puntos
-    // NOTA: La tabla 'perfiles' ya usa 'id', por lo que esta consulta es correcta
+    // Consulta a Supabase: Top 5 usuarios por puntos (usando tabla 'perfiles')
     const { data: usuarios, error } = await supabase
         .from('perfiles')
         .select('username, puntos, avatar')
@@ -90,7 +90,7 @@ async function cargarTendencias() {
     const grid = document.getElementById('destacadosGrid');
     if (!grid) return;
     
-    // CORRECCIÓN CRÍTICA: Cambiado 'id' por 'idjuego' para coincidir con la tabla SQL.
+    // CORRECCIÓN CRÍTICA 1: Cambiado 'id' por 'idjuego' para coincidir con la tabla SQL.
     const { data: juegos, error } = await supabase
         .from('juegos')
         .select('idjuego, titulo, genero, precio, imagen_url, keywords') 
