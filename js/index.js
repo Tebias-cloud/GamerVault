@@ -16,8 +16,8 @@ async function initPage() {
 
 // 1. Contador de Juegos (Hero Section)
 async function cargarContadores() {
-    // CORRECCIÓN CRÍTICA: Usamos 'idjuego' explícitamente en el select para el conteo,
-    // eliminando el error 400 que ocurría al intentar usar 'id'.
+    // CORRECCIÓN CRÍTICA: Usamos 'idjuego' explícitamente en el select para el conteo.
+    // Esto resuelve el error 400 que ocurría al intentar contar con la columna 'id'.
     const { count } = await supabase.from('juegos').select('idjuego', { count: 'exact', head: true }); 
     if (count !== null) {
         const el = document.getElementById('totalJuegosCount');
